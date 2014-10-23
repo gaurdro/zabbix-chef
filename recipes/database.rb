@@ -13,7 +13,7 @@ include_recipe 'zabbix::common'
 # between runs
 
 unless node['zabbix']['database']['dbpassword']
-  node.normal['zabbix']['database']['dbpassword'] = secure_password
+  node.normal['zabbix']['database']['dbpassword'] = "secure_password"
 end
 
 case node['zabbix']['database']['install_method']
