@@ -5,7 +5,7 @@
 # Apache 2.0
 #
 
-include_recipe 'zabbix::agent_common'
+#include_recipe 'zabbix::agent_common'
 
 remote_file "/tmp/zabbix-repo.rpm" do
   source "http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-release-2.4-1.el6.noarch.rpm"
