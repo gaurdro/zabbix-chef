@@ -1,3 +1,4 @@
+include_recipe "zabbix::common"
 include_recipe "zabbix::agent_#{node['zabbix']['agent']['install_method']}"
 
 #define out service

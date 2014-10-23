@@ -52,6 +52,16 @@ zabbix_dirs.each do |dir|
   end
 end
 
+remote_file "/tmp/zabbix-repo.rpm" do
+  source "http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-release-2.4-1.el6.noarch.rpm"
+  mode 0644
+end
+
+rpm_package "zabbix-repo" do
+  source "/tmp/zabbix-repo.rpm"
+  action :install
+end
+
 unless node['zabbix']['agent']['source_url']
   node.default['zabbix']['agent']['source_url'] = Chef::Zabbix.default_download_url(node['zabbix']['agent']['branch'], node['zabbix']['agent']['version'])
 end
