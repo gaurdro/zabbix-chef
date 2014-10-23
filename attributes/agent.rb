@@ -22,7 +22,7 @@ default['zabbix']['agent']['userparams_config_file']    = ::File.join(node['zabb
 default['zabbix']['agent']['groups']            = ['chef-agent']
 
 case node['platform_family']
-when 'rhel', 'debian'
+when 'rhel', 'debian', 'amazon'
   default['zabbix']['agent']['init_style']      = 'sysvinit'
   default['zabbix']['agent']['install_method']  = 'package'
   default['zabbix']['agent']['pid_file']        = ::File.join(node['zabbix']['run_dir'], 'zabbix_agentd.pid')
@@ -31,7 +31,7 @@ when 'rhel', 'debian'
   default['zabbix']['agent']['group']           = node['zabbix']['agent']['user']
 
   default['zabbix']['agent']['shell']           = node['zabbix']['shell']
-
+end
 default['zabbix']['agent']['log_file']           = nil # default (Syslog / windows event).
 # default['zabbix']['agent']['log_file']           = ::File.join(node['zabbix']['log_dir'], "zabbix_agentd.log"
 default['zabbix']['agent']['start_agents']       = nil # default (3)
