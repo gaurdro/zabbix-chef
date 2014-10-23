@@ -16,8 +16,15 @@ end
 unless node['zabbix']['web']['user']
   node.normal['zabbix']['web']['user'] = 'apache'
 end
+#set up web group and user
+group node['zabbix']['web']['user'] do
+  action :create
+end 
 
-user node['zabbix']['web']['user']
+user node['zabbix']['web']['user'] do
+  gid node['zabbix']['web']['user']
+  action :create
+end
 
 node['zabbix']['web']['packages'].each do |pkg|
   package pkg do
@@ -26,7 +33,6 @@ node['zabbix']['web']['packages'].each do |pkg|
   end
 end
 
-package 'libapache2-mod-php5' if platform_family?('debian')
 
 zabbix_source 'extract_zabbix_web' do
   branch node['zabbix']['server']['branch']
