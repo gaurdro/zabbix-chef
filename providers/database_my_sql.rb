@@ -3,7 +3,7 @@ def whyrun_supported?
 end
 
 def load_current_resource
-  require 'mysql'
+#  require 'mysql'
   @current_resource = Chef::Resource::ZabbixDatabase.new(@new_resource.dbname)
   @current_resource.dbname(@new_resource.dbname)
   @current_resource.host(@new_resource.host)
