@@ -19,7 +19,7 @@ rpm_package "zabbix-repo" do
   action :install
 end 
 
-package "zabbix" do
+package "zabbix-server-mysql" do
   action :upgrade
 end
 
