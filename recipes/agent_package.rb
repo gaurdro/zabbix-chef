@@ -7,7 +7,7 @@
 
 #include_recipe 'zabbix::agent_common'
 
-package "zabbix" do
+package "zabbix-agent" do
   action :upgrade
 end
 
