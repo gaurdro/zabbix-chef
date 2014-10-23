@@ -21,5 +21,5 @@ package "zabbix" do
   action :upgrade
 end
 
-#include_recipe 'zabbix::agent_common'
+include_recipe 'zabbix::agent_common'
 
