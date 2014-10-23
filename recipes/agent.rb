@@ -1,5 +1,9 @@
 include_recipe "zabbix::agent_#{node['zabbix']['agent']['install_method']}"
 
+#define out service
+service "zabbix_agentd" do
+  action :enable
+end 
 # Install configuration
 template 'zabbix_agentd.conf' do
   path node['zabbix']['agent']['config_file']
