@@ -34,29 +34,35 @@ node['zabbix']['web']['packages'].each do |pkg|
 end
 
 
-zabbix_source 'extract_zabbix_web' do
-  branch node['zabbix']['server']['branch']
-  version node['zabbix']['server']['version']
-  source_url node['zabbix']['server']['source_url']
-  code_dir node['zabbix']['src_dir']
-  target_dir "zabbix-#{node['zabbix']['server']['version']}"
-  install_dir node['zabbix']['install_dir']
-  action :extract_only
+#zabbix_source 'extract_zabbix_web' do
+#  branch node['zabbix']['server']['branch']
+#  version node['zabbix']['server']['version']
+#  source_url node['zabbix']['server']['source_url']
+#  code_dir node['zabbix']['src_dir']
+#  target_dir "zabbix-#{node['zabbix']['server']['version']}"
+#  install_dir node['zabbix']['install_dir']
+#  action :extract_only
+#end
+
+#link node['zabbix']['web_dir'] do
+#  to "#{node['zabbix']['src_dir']}/zabbix-#{node['zabbix']['server']['version']}/frontends/php"
+#end
+
+#directory "#{node['zabbix']['src_dir']}/zabbix-#{node['zabbix']['server']['version']}/frontends/php/conf" do
+#  owner node['apache']['user']
+#  group node['apache']['group']
+#  mode '0755'
+#  action :create
+#end
+
+# install web package
+package "zabbix-web" do
+  action :upgrade
 end
 
-link node['zabbix']['web_dir'] do
-  to "#{node['zabbix']['src_dir']}/zabbix-#{node['zabbix']['server']['version']}/frontends/php"
-end
-
-directory "#{node['zabbix']['src_dir']}/zabbix-#{node['zabbix']['server']['version']}/frontends/php/conf" do
-  owner node['apache']['user']
-  group node['apache']['group']
-  mode '0755'
-  action :create
-end
 
 # install zabbix PHP config file
-template "#{node['zabbix']['src_dir']}/zabbix-#{node['zabbix']['server']['version']}/frontends/php/conf/zabbix.conf.php" do
+template "/usr/share/zabbix/conf/zabbix.conf.php" do
   source 'zabbix_web.conf.php.erb'
   owner 'root'
   group 'root'
