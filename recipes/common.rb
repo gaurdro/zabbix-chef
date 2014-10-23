@@ -7,6 +7,10 @@
 # Apache 2.0
 #
 
+# install mysql gem for chef
+chef_gem 'mysql' do
+  action :install
+end 
 # Define root owned folders
 root_dirs = [
   node['zabbix']['etc_dir'],

@@ -1,9 +1,6 @@
 def whyrun_supported?
   true
 end
-chef_gem "mysql" do
-  action :install
-end 
 
 def load_current_resource
   require 'mysql'
