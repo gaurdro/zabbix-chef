@@ -9,5 +9,4 @@ supports 'redhat', '>= 6.0'
 supports 'centos', '>= 6.0'
 supports 'oracle', '>= 6.0'
 supports 'amazon', '>= 2014.09'
-depends 'yum-epel'
 
