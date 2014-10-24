@@ -43,3 +43,19 @@ root_dirs.each do |dir|
     recursive true
   end
 end
+
+#lay down server config file
+template "/etc/zabbix/zabbix_server.conf" do
+  source 'zabbix_server.conf.erb'
+  owner  'root'
+  group  'root'
+  mode   '644'
+ variables(
+    :dbhost             => node['zabbix']['database']['dbhost'],
+    :dbname             => node['zabbix']['database']['dbname'],
+    :dbuser             => node['zabbix']['database']['dbuser'],
+    :dbpassword         => node['zabbix']['database']['dbpassword'],
+    :dbport             => node['zabbix']['database']['dbport']
+  )
+  notifies :restart, 'service[zabbix-server]', :delayed
+end
