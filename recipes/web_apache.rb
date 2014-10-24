@@ -75,15 +75,15 @@ template "/usr/share/zabbix/conf/zabbix.conf.php" do
 end
 
 # install vhost for zabbix frontend
-web_app node['zabbix']['web']['fqdn'] do
-  server_name node['zabbix']['web']['fqdn']
-  server_aliases node['zabbix']['web']['aliases']
-  docroot node['zabbix']['web_dir']
-  not_if { node['zabbix']['web']['fqdn'].nil? }
-  php_settings node['zabbix']['web']['php']['settings']
-  notifies :restart, 'service[apache2]', :immediately
-end
+#web_app node['zabbix']['web']['fqdn'] do
+#  server_name node['zabbix']['web']['fqdn']
+#  server_aliases node['zabbix']['web']['aliases']
+#  docroot node['zabbix']['web_dir']
+#  not_if { node['zabbix']['web']['fqdn'].nil? }
+#  php_settings node['zabbix']['web']['php']['settings']
+#  notifies :restart, 'service[apache2]', :immediately
+#end
 
-apache_site '000-default' do
-  enable false
-end
+#apache_site '000-default' do
+#  enable false
+#end
