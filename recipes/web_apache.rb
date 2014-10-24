@@ -58,6 +58,7 @@ end
 # install web package
 package "zabbix-web" do
   action :upgrade
+  flush_cache [:before]
 end
 
 

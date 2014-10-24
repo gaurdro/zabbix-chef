@@ -7,6 +7,7 @@
 
 package "zabbix-server-mysql" do
   action :upgrade
+  flush_cache [:before] 
 end
 
 include_recipe 'zabbix::server_common'

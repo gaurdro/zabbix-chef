@@ -9,6 +9,7 @@
 
 package "zabbix-agent" do
   action :upgrade
+  flush_cache [:before]
 end
 
 include_recipe 'zabbix::agent_common'
