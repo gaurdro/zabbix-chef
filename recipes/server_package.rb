@@ -4,11 +4,18 @@
 #
 # Apache 2.0
 #
+include_recipe 'zabbix::server_common'
 
 yum_package "zabbix-server-mysql" do
   action :upgrade
   flush_cache [:before] 
 end
 
-include_recipe 'zabbix::server_common'
+# start zabbix server!
+service "zabbix-server" do
+  action :enable
+end
 
+service "zabbix-server" do
+  action :start
+end
