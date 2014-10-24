@@ -29,7 +29,7 @@ end
 node['zabbix']['web']['packages'].each do |pkg|
   package pkg do
     action :install
-    notifies :restart, 'service[apache2]'
+    notifies :restart, 'service[httpd]'
   end
 end
 
