@@ -5,7 +5,7 @@
 # Apache 2.0
 #
 
-package "zabbix-server-mysql" do
+yum_package "zabbix-server-mysql" do
   action :upgrade
   flush_cache [:before] 
 end

@@ -7,7 +7,7 @@
 
 #include_recipe 'zabbix::agent_common'
 
-package "zabbix-agent" do
+yum_package "zabbix-agent" do
   action :upgrade
   flush_cache [:before]
 end
