@@ -61,6 +61,10 @@ yum_package "zabbix-web" do
   flush_cache [:before]
 end
 
+#start web server
+service "httpd" do
+  action :enable
+end
 
 # install zabbix PHP config file
 template "/usr/share/zabbix/conf/zabbix.conf.php" do
