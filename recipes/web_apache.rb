@@ -67,7 +67,7 @@ service "httpd" do
 end
 
 # install zabbix PHP config file
-template "/usr/share/zabbix/conf/zabbix.conf.php" do
+template "/etc/zabbix/web/zabbix.conf.php" do
   source 'zabbix_web.conf.php.erb'
   owner 'root'
   group 'root'
